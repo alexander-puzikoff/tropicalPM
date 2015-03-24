@@ -120,6 +120,11 @@ public class EigthPart {
 			}
 			next = next.getNextNode();
 		}
+		if (l.contains(next)) { // last node
+			returnNode = next;
+		} else {
+			l.add(next);
+		}
 		return returnNode;
 	}
 

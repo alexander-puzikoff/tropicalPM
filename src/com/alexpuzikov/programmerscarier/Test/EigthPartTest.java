@@ -1,4 +1,4 @@
-package Test;
+package com.alexpuzikov.programmerscarier.Test;
 
 import static org.junit.Assert.*;
 
@@ -80,8 +80,15 @@ public class EigthPartTest {
 		startNode.setNextNode(new Node("B")).setNextNode(new Node("C"))
 				.setNextNode(new Node("D")).setNextNode(new Node("E"))
 				.setNextNode(new Node("C"));
-		assertEquals("", expected.toString(), tester.task2dot6(startNode)
-				.toString());
+		Node startNodeTWO = new Node("A");
+		startNodeTWO.setNextNode(new Node("B")).setNextNode(new Node("C"))
+				.setNextNode(new Node("D")).setNextNode(new Node("E"))
+				.setNextNode(new Node("C")).setNextNode(new Node("F"));
+		 assertEquals("", expected.toString(), tester.task2dot6(startNode)
+		 .toString());
+		Node result2 = tester.task2dot6(startNodeTWO);
+
+		assertEquals("", true, expected.compareTo(result2) == 0);
 
 	}
 }

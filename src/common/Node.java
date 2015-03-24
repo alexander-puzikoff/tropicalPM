@@ -74,6 +74,7 @@ public class Node<T> implements Comparable {
 
 	@Override
 	public int compareTo(Object obj) {
+
 		if (!(obj instanceof Node)) {
 			throw new IllegalArgumentException();
 		}
