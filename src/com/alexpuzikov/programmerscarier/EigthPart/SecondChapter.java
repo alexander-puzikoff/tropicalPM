@@ -1,11 +1,11 @@
-package com.alexpuzikov.programmerscarier;
+package com.alexpuzikov.programmerscarier.EigthPart;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import common.Node;
 
-public class EigthPart {
+public class SecondChapter{
 
 	/**
 	 * (7 -> 1-> 6) + (5 -> 9 -> 2) = (2 -> 1 -> 9)
@@ -128,20 +128,45 @@ public class EigthPart {
 		return returnNode;
 	}
 
+	/**
+	 * find polindrom
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public boolean task2dot7(Node head) {
+		List<Node> l = new LinkedList<Node>();
+		Node next = head;
+		if(next == null){
+			return true;
+		}
+		while (next.getNextNode() != null) {
+			l.add(next);
+
+			next = next.getNextNode();
+		}
+		l.add(next);
+		if (l.size() <= 1) {
+			return true;
+		}
+		boolean even = true;
+		if (l.size() % 2 == 0) { // even
+			for (int i = 0; i <= l.size() / 2; i++) {
+				if (!l.get(i).equals(l.get(l.size() - i-1))) {
+					even = false;
+				}
+			}
+		} else { // not even
+			for (int i = 0; i < l.size() / 2; i++) {
+				if (!l.get(i).equals(l.get(l.size() - i-1))) {
+					even = false;
+				}
+			}
+		}
+		return even;
+	}
+
 	public static void main(String[] args) {
-		Node<Integer> ff = new Node<Integer>(7);
-		Node<Integer> fs = new Node<Integer>(1);
-		ff.setNextNode(fs);
-		Node<Integer> ft = new Node<Integer>(6);
-		fs.setNextNode(ft);
-
-		Node<Integer> sf = new Node<Integer>(5);
-		Node<Integer> ss = new Node<Integer>(9);
-		sf.setNextNode(ss);
-		Node<Integer> st = new Node<Integer>(2);
-		ss.setNextNode(st);
-
-		Node resultHead = taskTwoDotFive(ff, sf);
-		System.out.println(resultHead);
+		System.out.println(9 / 2);
 	}
 }

@@ -1,4 +1,4 @@
-package com.alexpuzikov.programmerscarier.Test;
+package com.alexpuzikov.programmerscarier.EigthPart.Test;
 
 import static org.junit.Assert.*;
 
@@ -6,13 +6,13 @@ import org.junit.Test;
 
 import common.*;
 
-import com.alexpuzikov.programmerscarier.EigthPart;
+import com.alexpuzikov.programmerscarier.EigthPart.SecondChapter;
 
-public class EigthPartTest {
+public class SecondChapterTest {
 
 	@Test
 	public void testSummOfTwoArrays() {
-		EigthPart tester = new EigthPart();
+		SecondChapter tester = new SecondChapter();
 		Node expected = new Node<Integer>(2);
 		expected.setNextNode(new Node<Integer>(1)).setNextNode(
 				new Node<Integer>(9));
@@ -30,7 +30,7 @@ public class EigthPartTest {
 
 	@Test
 	public void testInvertion() {
-		EigthPart tester = new EigthPart();
+		SecondChapter tester = new SecondChapter();
 		Node<Integer> expected = new Node<Integer>(2);
 		expected.setNextNode(new Node<Integer>(1))
 				.setNextNode(new Node<Integer>(9))
@@ -55,7 +55,7 @@ public class EigthPartTest {
 
 	@Test
 	public void invertionSummOfTwoArrays() {
-		EigthPart tester = new EigthPart();
+		SecondChapter tester = new SecondChapter();
 		Node expected = new Node<Integer>(9);
 		expected.setNextNode(new Node<Integer>(1)).setNextNode(
 				new Node<Integer>(2));
@@ -72,8 +72,31 @@ public class EigthPartTest {
 	}
 
 	@Test
+	public void testTask2dot7() {
+		SecondChapter tester = new SecondChapter();
+		Node expected = new Node("C");
+		Node expectedtwo = null;
+		Node startNode = new Node("A");
+		startNode.setNextNode(new Node("B")).setNextNode(new Node("C"))
+				.setNextNode(new Node("D")).setNextNode(new Node("E"))
+				.setNextNode(new Node("C"));
+		Node startNodetwo = new Node("A");
+		startNodetwo.setNextNode(new Node("B")).setNextNode(new Node("A"));
+		Node startNodethree = new Node("A");
+		startNodethree.setNextNode(new Node("B")).setNextNode(new Node("B"))
+				.setNextNode(new Node("A"));
+		assertEquals("C true", true, tester.task2dot7(expected));
+		assertEquals("null true", true, tester.task2dot7(expectedtwo));
+		assertEquals("false a->b->c->d->e->c", false,
+				tester.task2dot7(startNode));
+		assertEquals("true a->b->a", true, tester.task2dot7(startNodetwo));
+		assertEquals("true a->b->b->a", true, tester.task2dot7(startNodethree));
+
+	}
+
+	@Test
 	public void testTask2dot6() {
-		EigthPart tester = new EigthPart();
+		SecondChapter tester = new SecondChapter();
 		Node expected = new Node("C");
 
 		Node startNode = new Node("A");
@@ -84,8 +107,8 @@ public class EigthPartTest {
 		startNodeTWO.setNextNode(new Node("B")).setNextNode(new Node("C"))
 				.setNextNode(new Node("D")).setNextNode(new Node("E"))
 				.setNextNode(new Node("C")).setNextNode(new Node("F"));
-		 assertEquals("", expected.toString(), tester.task2dot6(startNode)
-		 .toString());
+		assertEquals("", expected.toString(), tester.task2dot6(startNode)
+				.toString());
 		Node result2 = tester.task2dot6(startNodeTWO);
 
 		assertEquals("", true, expected.compareTo(result2) == 0);
