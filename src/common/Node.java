@@ -72,7 +72,6 @@ public class Node<T> implements Comparable {
 		return false;
 	}
 
-	@Override
 	public int compareTo(Object obj) {
 
 		if (!(obj instanceof Node)) {
