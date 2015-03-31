@@ -1,20 +1,39 @@
 package common;
 
-public class MStack {
-	Object[] array = new Object[4];
+import java.util.Arrays;
+
+public class MStack<T> {
+	@SuppressWarnings("unchecked")
+	T[] array = (T[]) new Object[4];
 	int current_index = 0;
-	int min_index = 0;
+	int min_index = -1;
 
 	public int size() {
 		return this.current_index;
 	}
 
-	public void push(Object o) {
+	public void push(T o) {
 		this.array[this.current_index] = o;
 		this.current_index++;
+		if (current_index >= this.array.length / 2) {
+			this.array = Arrays.copyOf(this.array, this.array.length * 2);
+
+		}
+		// checking min
+		if (o instanceof Number) {
+			if (this.min_index == -1) {
+				this.min_index = 0;
+			} else {
+				Number cur = (Number) this.array[this.min_index];
+				Number newc = (Number) o;
+				if (newc.doubleValue() < cur.doubleValue()) {
+					this.min_index = this.current_index - 1;
+				}
+			}
+		}
 	}
 
-	public Object min() {
+	public T min() {
 		if (current_index > 0) {
 			return this.array[this.min_index];
 		} else {
@@ -22,13 +41,14 @@ public class MStack {
 		}
 	}
 
-	public Object pop() {
+	public T pop() {
 		if (this.current_index >= 0) {
-			Object o =this.array[this.current_index];
+			T o = this.array[this.current_index];
 			this.array[this.current_index] = null;
 			this.current_index--;
 			return o;
 		} else {
+			min_index = -1;
 			return null;
 		}
 	}
