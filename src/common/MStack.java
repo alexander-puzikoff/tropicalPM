@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class MStack<T> {
 	@SuppressWarnings("unchecked")
-	T[] array = (T[]) new Object[4];
-	int current_index = 0;
-	int min_index = -1;
+	private T[] array = (T[]) new Object[4];
+	private int current_index = 0;
+	private int min_index = -1;
 
 	public int size() {
 		return this.current_index;

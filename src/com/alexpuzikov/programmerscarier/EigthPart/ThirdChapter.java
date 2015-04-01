@@ -11,6 +11,7 @@ public class ThirdChapter {
 		mStack.push(1);
 		mStack.push(-10);
 		mStack.push(12);
+		mStack.push(-112);
 		mStack.push(13);
 		System.out.println(mStack.size());
 		System.out.println(mStack.min());
