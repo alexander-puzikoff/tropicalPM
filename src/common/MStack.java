@@ -42,10 +42,10 @@ public class MStack<T> {
 	}
 
 	public T pop() {
+		this.current_index--;
 		if (this.current_index >= 0) {
 			T o = this.array[this.current_index];
 			this.array[this.current_index] = null;
-			this.current_index--;
 			return o;
 		} else {
 			min_index = -1;

@@ -20,8 +20,9 @@ public class StackOfMStacks<T> {
 		return maxSize;
 	}
 
-	public StackOfMStacks() {
+	public StackOfMStacks(int maxSize) {
 		ms = new MStack<MStack<T>>();
+		this.maxSize = maxSize;
 		this.curStack = new MStack<T>();
 		// ms.push(this.curStack);
 
@@ -31,31 +32,54 @@ public class StackOfMStacks<T> {
 		return this.currentIndex;
 	}
 
-	void setMaxSize(int max_size) {
+	public void setMaxSize(int max_size) {
 		this.maxSize = max_size;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Current index: ");
+		sb.append(currentIndex);
+		sb.append("\r\n");
+		sb.append("Current inner stack index: ");
+		sb.append(curStackIndex);
+		sb.append("\r\n");
+
+		return sb.toString();
 	}
 
 	public void push(T o) {
 
-		if (this.maxSize * this.curStackIndex >= this.currentIndex) {
+		if (this.maxSize * this.curStackIndex > this.currentIndex) { // in
+																		// current
+																		// stack
 			this.curStack.push(o);
 			this.currentIndex++;
-		} else {
+		} else { // new stack
 			this.curStackIndex++;
 			this.currentIndex++;
 			ms.push(this.curStack);
 			this.curStack = new MStack<T>();
+			this.curStack.push(o);
 		}
 	}
 
 	public T pop() {
 
 		this.currentIndex--;
-		if (this.currentIndex <= (this.maxSize * this.curStackIndex - 1)) {
-			T object = this.curStack.pop();
+		if (this.currentIndex <= (this.maxSize * (this.curStackIndex - 1))) {
+			T object = null;
+			if (this.curStack != null) {
+				object = this.curStack.pop();
+			}
+			this.curStackIndex--;
 			this.curStack = ms.pop();
 			return object;
 		} else {
+			if(this.curStack == null){
+				return null;
+			}
 			return this.curStack.pop();
 		}
 	}
