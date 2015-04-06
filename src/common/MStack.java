@@ -12,6 +12,11 @@ public class MStack<T> {
 		return this.current_index;
 	}
 
+	public T peek() {
+		T o = this.array[this.current_index - 1];
+		return o;
+	}
+
 	public void push(T o) {
 		this.array[this.current_index] = o;
 		this.current_index++;

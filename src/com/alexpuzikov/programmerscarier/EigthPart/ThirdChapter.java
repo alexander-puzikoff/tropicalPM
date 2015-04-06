@@ -1,5 +1,10 @@
 package com.alexpuzikov.programmerscarier.EigthPart;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Stack;
+
 import common.MStack;
 import common.StackOfMStacks;
 
@@ -53,10 +58,99 @@ public class ThirdChapter {
 		System.out.println(st.pop());
 		System.out.println(st.pop());
 		System.out.println(st.pop());
+	}
+
+	int getAccurateSizeTower(Stack<Integer> st) {
+		int as = 1;
+		for (int i = st.size() - 1; i > 0; i--) {
+			if (st.elementAt(i) <= st.elementAt(i - 1)) {
+				as++;
+			} else {
+				break;
+			}
 		}
+		return as;
+	}
+
+	/**
+	 * hanoi tower
+	 * 
+	 * @param n
+	 *            - number of disks
+	 */
+	void task3dot4(int n) {
+		Stack[] sticks = { new Stack<Integer>(), new Stack<Integer>(),
+				new Stack<Integer>() };
+		Random r = new Random();
+		for (int i = 0; i < n; i++) {
+			sticks[r.nextInt(3)].push(r.nextInt(100));
+		}
+		System.out.println(Arrays.toString(sticks));
+		while (true) {
+			Integer a = null, b = null, c = null;
+			int aS = 0, bS, cS = 0;
+			if (sticks[0].isEmpty()) {
+				a = Integer.MAX_VALUE;
+			} else {
+				a = (Integer) sticks[0].peek();
+				aS = getAccurateSizeTower(sticks[0]);
+			}
+			if (sticks[1].isEmpty()) {
+				b = Integer.MAX_VALUE;
+			} else {
+				b = (Integer) sticks[1].peek();
+				bS = getAccurateSizeTower(sticks[1]);
+			}
+			if (sticks[2].isEmpty()) {
+				c = Integer.MAX_VALUE;
+			} else {
+				c = (Integer) sticks[2].peek();
+				cS = getAccurateSizeTower(sticks[2]);
+			}
+			boolean stop = true;
+
+			if (a < b && b < c) {
+				sticks[2].push(sticks[1].pop());
+				stop = false;
+				System.out.println(Arrays.toString(sticks));
+				sticks[2].push(sticks[0].pop());
+			} else if (a < c && c < b) {
+				sticks[1].push(sticks[2].pop());
+				stop = false;
+				System.out.println(Arrays.toString(sticks));
+				sticks[1].push(sticks[0].pop());
+			} else if (b < a && a < c) {
+				sticks[2].push(sticks[0].pop());
+				stop = false;
+				System.out.println(Arrays.toString(sticks));
+				sticks[2].push(sticks[1].pop());
+			} else if (b < c && c < a) {
+				sticks[0].push(sticks[2].pop());
+				stop = false;
+				System.out.println(Arrays.toString(sticks));
+				sticks[0].push(sticks[1].pop());
+			} else if (c < b && b < a) {
+				sticks[0].push(sticks[1].pop());
+				stop = false;
+				System.out.println(Arrays.toString(sticks));
+				sticks[0].push(sticks[2].pop());
+			} else if (c < a && a < b) {
+				sticks[1].push(sticks[0].pop());
+				stop = false;
+				System.out.println(Arrays.toString(sticks));
+				sticks[1].push(sticks[2].pop());
+			}
+			System.out.println(Arrays.toString(sticks));
+			System.out.println("-");
+			if (stop) {
+				break;
+			}
+		}
+		System.out.println(Arrays.toString(sticks));
+	}
 
 	public static void main(String[] args) {
 		ThirdChapter tc = new ThirdChapter();
-		tc.task3dot3();
+		tc.task3dot4(9);
 	}
 }
