@@ -166,8 +166,8 @@ public class ThirdChapter {
 								.pop());
 					} else {
 						if (!sticks[(toppos + 2) % 3].isEmpty())
-						sticks[(toppos + 1) % 3].push(sticks[(toppos + 2) % 3]
-								.pop());
+							sticks[(toppos + 1) % 3]
+									.push(sticks[(toppos + 2) % 3].pop());
 					}
 				}
 
@@ -273,6 +273,12 @@ public class ThirdChapter {
 		// }
 		// }
 		System.out.println(Arrays.toString(sticks));
+	}
+
+	/**
+	 * create class MyQueue using two stacks
+	 */
+	void task3dot5() {
 	}
 
 	public static void main(String[] args) {
