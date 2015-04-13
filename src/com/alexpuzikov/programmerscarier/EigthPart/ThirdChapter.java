@@ -279,10 +279,58 @@ public class ThirdChapter {
 	 * create class MyQueue using two stacks
 	 */
 	void task3dot5() {
+		class MyQueue {
+			void push(Object o) {
+				while (ms2.size() != 0) {
+					ms1.push(ms2.pop());
+				}
+				ms1.push(o);
+			}
+
+			Object peek() {
+				while (ms1.size() != 0) {
+					ms2.push(ms1.pop());
+				}
+				return ms2.peek();
+			}
+
+			Object pop() {
+				while (ms1.size() != 0) {
+					ms2.push(ms1.pop());
+				}
+				return ms2.pop();
+			}
+
+			MStack<Object> ms1 = new MStack<Object>();
+			MStack<Object> ms2 = new MStack<Object>();
+		}
+		MyQueue st = new MyQueue();
+		st.push(-61);
+		st.push(18);
+		st.push(-100);
+		st.push(102);
+		st.push(-4112);
+		st.push(103);
+		st.push(19);
+		System.out.println(st.pop());
+		System.out.println(st.pop());
+		st.push(-16);
+		st.push(1);
+		st.push(-120);
+		st.push(124);
+		System.out.println(st.pop());
+		System.out.println(st.pop());
+		System.out.println(st.pop());
+		System.out.println(st.pop());
+		System.out.println(st.pop());
+		System.out.println(st.pop());
+		System.out.println(st.pop());
+		System.out.println(st.pop());
+
 	}
 
 	public static void main(String[] args) {
 		ThirdChapter tc = new ThirdChapter();
-		tc.task3dot4(6);
+		tc.task3dot5();
 	}
 }

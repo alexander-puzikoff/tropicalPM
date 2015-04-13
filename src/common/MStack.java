@@ -31,7 +31,8 @@ public class MStack<T> {
 			} else {
 				Number cur = (Number) this.array[this.min_index];
 				Number newc = (Number) o;
-				if (newc.doubleValue() < cur.doubleValue()) {
+				if (newc != null && cur != null
+						&& (newc.doubleValue() < cur.doubleValue())) {
 					this.min_index = this.current_index - 1;
 				}
 			}
