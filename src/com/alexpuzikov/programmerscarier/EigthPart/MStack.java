@@ -1,4 +1,4 @@
-package common;
+package com.alexpuzikov.programmerscarier.EigthPart;
 
 import java.util.Arrays;
 

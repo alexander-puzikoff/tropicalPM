@@ -1,4 +1,4 @@
-package common;
+package com.alexpuzikov.programmerscarier.EigthPart;
 
 /**
  * for task 3.3 of third chapter

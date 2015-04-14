@@ -5,9 +5,6 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Stack;
 
-import common.MStack;
-import common.StackOfMStacks;
-
 public class ThirdChapter {
 
 	void task3dot2() {

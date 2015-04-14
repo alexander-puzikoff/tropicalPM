@@ -2,7 +2,7 @@ package com.alexpuzikov.programmerscarier.EigthPart.Test;
 
 import org.junit.Test;
 
-import common.MStack;
+import com.alexpuzikov.programmerscarier.EigthPart.MStack;
 
 import static org.junit.Assert.*;
 
