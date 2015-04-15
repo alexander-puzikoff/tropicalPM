@@ -326,8 +326,51 @@ public class ThirdChapter {
 
 	}
 
+	/**
+	 * sorting stack from min to max. using pop push peek is empty using only
+	 * stacks not arrays or smth else
+	 */
+	MStack task3dot6(MStack ms) {
+		MStack curSt = new MStack<Integer>();
+		MStack boofer = new MStack<Integer>();
+		if (ms.isEmpty())
+			return null;
+
+		curSt.push(ms.pop());
+		while (!ms.isEmpty()) {
+
+			int a = (Integer) ms.peek();
+			int b = (Integer) curSt.peek();
+			if (b <= a) {
+				curSt.push(ms.pop());
+			} else {
+				while (b > a) {
+					boofer.push(curSt.pop());
+					if (curSt.peek() == null) {
+						b = Integer.MIN_VALUE;
+					} else {
+						b = (Integer) curSt.peek();
+					}
+				}
+				curSt.push(ms.pop());
+				while (!boofer.isEmpty()) {
+					curSt.push(boofer.pop());
+				}
+			}
+		}
+		return curSt;
+	}
+
 	public static void main(String[] args) {
 		ThirdChapter tc = new ThirdChapter();
-		tc.task3dot5();
+		MStack st = new MStack<Integer>();
+		st.push(-61);
+		st.push(18);
+		st.push(-100);
+		st.push(102);
+		st.push(-4112);
+		st.push(103);
+		st.push(19);
+		System.out.println(tc.task3dot6(st));
 	}
 }

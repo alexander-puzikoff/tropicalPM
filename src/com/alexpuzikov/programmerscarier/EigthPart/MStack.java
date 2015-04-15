@@ -13,8 +13,14 @@ public class MStack<T> {
 	}
 
 	public T peek() {
+		if (this.current_index - 1 < 0)
+			return null;
 		T o = this.array[this.current_index - 1];
 		return o;
+	}
+
+	public boolean isEmpty() {
+		return this.current_index <= -1;
 	}
 
 	public void push(T o) {
@@ -48,8 +54,8 @@ public class MStack<T> {
 	}
 
 	public T pop() {
-		this.current_index--;
-		if (this.current_index >= 0) {
+		if (this.current_index > 0) {
+			this.current_index--;
 			T o = this.array[this.current_index];
 			this.array[this.current_index] = null;
 			return o;
